@@ -81,6 +81,7 @@ public class JsscAccerelometerDataSource implements AccelerometerDataSource {
             if (serialPort != null) {
                 serialPort.removeEventListener();
                 serialPort.closePort();
+                serialPort = null;
             }
 
             errorHandlers.clear();

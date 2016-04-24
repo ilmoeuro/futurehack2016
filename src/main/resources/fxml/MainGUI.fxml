@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.ilmoeuro.futurehack2016.MainGUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.ilmoeuro.futurehack2016.MainGUIController">
     <stylesheets>
         <URL value="@/styles/maingui.css" />
     </stylesheets>
@@ -30,7 +30,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <LineChart fx:id="realtimeData" animated="false" createSymbols="false" layoutX="14.0" layoutY="60.0" legendSide="TOP" prefHeight="227.0" prefWidth="580.0" title="Realtime accelerometer data" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+                              <LineChart fx:id="realtimeData" animated="false" createSymbols="false" layoutX="14.0" layoutY="67.0" legendSide="TOP" prefHeight="220.0" prefWidth="580.0" title="Kettlebell" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="67.0">
                                 <xAxis>
                                   <NumberAxis animated="false" autoRanging="false" forceZeroInRange="false" side="BOTTOM" tickUnit="1000.0" upperBound="10000.0" fx:id="xAxis" />
                                 </xAxis>
@@ -39,25 +39,56 @@
                                 </yAxis>
                               </LineChart>
                               <Label fx:id="statusField" layoutX="14.0" layoutY="298.0" prefHeight="15.0" prefWidth="574.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
-                              <Label fx:id="notice" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="569.0" textAlignment="CENTER" textFill="RED">
+                              <Label fx:id="notice" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="569.0" textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="stats" layoutX="14.0" layoutY="39.0" prefHeight="25.0" prefWidth="569.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="39.0">
+                                 <font>
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="History">
+                <Tab text="History - kettlebell">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <LineChart fx:id="historyChart1" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                           </children></AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="History - Pulldown">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <LineChart fx:id="historyChart2" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                              </LineChart>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="serialPortField" promptText="USB port">
+                  <TextField fx:id="serialPortField" prefHeight="25.0" prefWidth="100.0" promptText="USB port">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
@@ -68,6 +99,21 @@
                      </HBox.margin>
                   </Button>
                   <Button fx:id="disconnectButton" mnemonicParsing="false" text="Disconnect">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <TextField fx:id="ibmUsername" layoutX="20.0" layoutY="20.0" prefHeight="25.0" prefWidth="100.0" promptText="IBM username">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <PasswordField fx:id="ibmPassword" prefHeight="25.0" prefWidth="100.0" promptText="IBM password">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </PasswordField>
+                  <Button fx:id="enableTTS" layoutX="229.0" layoutY="20.0" mnemonicParsing="false" text="Enable TTS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
