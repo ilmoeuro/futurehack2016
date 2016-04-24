@@ -237,8 +237,6 @@ public class MainGUIController implements Initializable {
                         
                         if (repeatSpeed > 2) {
                             showNotification("Too fast");
-                        } else if (repeatSpeed < 0.2) {
-                            showNotification("Too slow");
                         }
                         
                         lastRepeatTime = t;
